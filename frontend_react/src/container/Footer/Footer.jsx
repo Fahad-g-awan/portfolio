@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import emailjs from "@emailjs/browser";
 
 import { images } from "../../constants";
 import { AppWrap, MotionWrap } from "../../wrapper";
@@ -30,18 +31,47 @@ const Footer = () => {
       setLoading(false);
       setIsFormSubmitted(true);
     });
+
+    emailjs
+      .send(
+        "service_14jlwvh",
+        "template_b9p05xt",
+        {
+          to_name: "Fahad",
+          from_name: name,
+          message,
+          reply_to: email,
+        },
+        "LSpRL_hXFBMJ7dCeW"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
   };
+
+  if (isFormSubmitted) {
+    setTimeout(() => {
+      setIsFormSubmitted(false);
+      setFormData({ name: "", email: "", message: "" });
+    }, 9000);
+  }
 
   const { name, email, message } = formData;
 
   return (
     <>
-      <h2 className="head-text">Take a Coffe & chat with me</h2>
+      <h2 className="head-text">Take a Coffee & chat with me</h2>
+
       <div className="app__footer-cards">
         <div className="app__footer-card">
           <img src={images.email} alt="email" />
           <a href="mailto:hello@email.com" target="_blank" className="p-text">
-            hello@email.com
+            fahadghaffar.awan@gmail.com
           </a>
         </div>
         <div className="app__footer-card">
@@ -97,4 +127,4 @@ const Footer = () => {
   );
 };
 
-export default AppWrap(MotionWrap(Footer, "app__footer"), "contact", "app__whitebg");
+export default AppWrap(MotionWrap(Footer, "app__footer"), "Contact", "app__primarybg");

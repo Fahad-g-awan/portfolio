@@ -18,17 +18,18 @@
   align-items: center;
 
   img {
-    width: 90px;
-    height: 20px;
+    // width: 90px;
+    // height: 20px;
 
     @media screen and (min-width: 2000px) {
-      width: 180px;
-      height: 40px;
+      // width: 180px;
+      // height: 40px;
     }
 
     @media screen and (min-width: 1200px) {
-      width: 140px;
-      height: 30px;
+      // width: 140px;
+      // height: 30px;
+      width: 75%;
     }
   }
 }
@@ -66,7 +67,7 @@
       }
 
       @media screen and (min-width: 900px) {
-        font-size: 1.2rem;
+        font-size: 1rem;
       }
 
       @media screen and (min-width: 2000px) {
@@ -87,6 +88,15 @@
 
   @media screen and (max-width: 900px) {
     display: none;
+  }
+}
+
+.active {
+  div {
+    background: var(--secondary-color) !important;
+  }
+  a {
+    color: var(--secondary-color) !important;
   }
 }
 
